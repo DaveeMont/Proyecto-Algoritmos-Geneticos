@@ -1,1 +1,4 @@
 /Netbeans/TSP/build/
+/build
+/dist
+/nbproject/private/
