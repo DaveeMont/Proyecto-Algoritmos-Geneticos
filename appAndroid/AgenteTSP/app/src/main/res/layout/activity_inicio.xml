@@ -4,28 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InicioActivity">
+    tools:context=".InicioActivity"><![CDATA[
+
+
+        android:layout_marginTop="68dp"
+        android:backgroundTint="#0017AF"
+
+        android:text="Guardar "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.074"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/edtAddress" />
+
+
+    ]]>
 
     <Button
         android:id="@+id/button3"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="146dp"
         android:layout_height="45dp"
-<<<<<<< HEAD
-        android:layout_marginTop="24dp"
-=======
-        android:layout_marginTop="68dp"
-        android:backgroundTint="#0017AF"
->>>>>>> a50c878b829bc0e99fbed46cc2d06564a2a7e802
+        android:layout_marginTop="52dp"
+        android:backgroundTint="#3F51B5"
         android:text="Guardar "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/cajaTelefono" />
-=======
-        app:layout_constraintTop_toBottomOf="@+id/edtAddress" />
->>>>>>> a50c878b829bc0e99fbed46cc2d06564a2a7e802
 
     <EditText
         android:id="@+id/cajaNombre"
@@ -41,14 +47,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
-<<<<<<< HEAD
-        android:id="@+id/cajaDireccion"
-=======
+
         android:id="@+id/edtAddress"
->>>>>>> a50c878b829bc0e99fbed46cc2d06564a2a7e802
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Dirección "
         android:inputType="textPersonName"
@@ -72,61 +75,67 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        style="@style/Widget.AppCompat.Button.Colored"
         android:id="@+id/button4"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="125dp"
         android:layout_height="46dp"
-        android:layout_marginTop="100dp"
-        android:text="ver "
+        android:layout_marginTop="52dp"
         android:backgroundTint="#0017AF"
+        android:text="ver "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.78"
         app:layout_constraintStart_toEndOf="@+id/button3"
-<<<<<<< HEAD
-        app:layout_constraintTop_toBottomOf="@+id/cajaDireccion" />
-=======
+        app:layout_constraintTop_toBottomOf="@+id/cajaTelefono" />
+
+
         app:layout_constraintTop_toBottomOf="@+id/edtAddress" />
->>>>>>> a50c878b829bc0e99fbed46cc2d06564a2a7e802
+
+
+
 
     <Button
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:backgroundTint="#0017AF"
         android:id="@+id/button5"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#0017AF"
         android:onClick="Mainn"
         android:text="Regresar"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
-        app:layout_constraintVertical_bias="0.305" />
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 
-<<<<<<< HEAD
+
+
     <EditText
         android:id="@+id/cajaTelefono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Teléfono "
         android:inputType="numberDecimal"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.42"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cajaDireccion" />
-=======
+        app:layout_constraintTop_toBottomOf="@+id/edtAddress" />
+
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="28dp"
         android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/button5"
+        app:layout_constraintVertical_bias="0.0" />
 
->>>>>>> a50c878b829bc0e99fbed46cc2d06564a2a7e802
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
