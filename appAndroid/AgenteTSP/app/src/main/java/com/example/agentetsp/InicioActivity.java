@@ -30,4 +30,10 @@ public class InicioActivity extends AppCompatActivity {
         Intent mainn= new Intent(this, MainActivity.class);
         startActivity(mainn);
     }
+
+    //Método del boton guardar
+
+    public void Guardar(View view){
+
+    }
 }
