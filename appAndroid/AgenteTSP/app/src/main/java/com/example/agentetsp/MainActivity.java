@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Salir (View view){
-        finish();
-        System.exit(0);
+       // finish();
+       System.exit(0);
     }
 }
