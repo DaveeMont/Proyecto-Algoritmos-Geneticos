@@ -31,9 +31,15 @@ public class TSP extends Salesman{
     private static final String CVS_REVISION = "$Revision: 1.14 $";
 
     /** Numero de ciudades o nodos a visitar */
-    public static final int CITIES = 7;
+    public static final int CITIES = 5;
+    /*
     public static final int[][] CITYARRAY = new int[][] { {2, 4}, {7, 5}, {7, 11},
         {8, 1}, {1, 6}, {5, 9}, {0, 11}
+    };
+    */
+    public static final double[][] CITYARRAY = new double[][] { {19.776968, -99.116583}, {19.747824, -99.179816}, {19.760017, -99.091561},
+        {19.827389, -99.077679}, {19.817549, -99.079310}
+            
     };
 
     /** Método main
@@ -64,14 +70,15 @@ public class TSP extends Salesman{
     */
     @Override
     public double distance(Gene a_from, Gene a_to) {
-        IntegerGene geneA = (IntegerGene) a_from;
-        IntegerGene geneB = (IntegerGene) a_to;
-        int a = geneA.intValue();
-        int b = geneB.intValue();
-        int x1 = CITYARRAY[a][0];
-        int y1 = CITYARRAY[a][1];
-        int x2 = CITYARRAY[b][0];
-        int y2 = CITYARRAY[b][1];
+        DoubleGene geneB = (DoubleGene) a_to;
+        DoubleGene geneA = (DoubleGene) a_from;
+        //IntegerGene geneB = (IntegerGene) a_to;
+        int a = (int)geneA.doubleValue();
+        int b = (int)geneB.doubleValue();
+        int x1 = (int) CITYARRAY[a][0];
+        int y1 =(int) CITYARRAY[a][1];
+        int x2 = (int)CITYARRAY[b][0];
+        int y2 =(int) CITYARRAY[b][1];
         return Math.sqrt( (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
     }
     /*
@@ -84,8 +91,8 @@ public class TSP extends Salesman{
         try {
             Gene[] genes = new Gene[CITIES];
             for (int i = 0; i < genes.length; i++) {
-                genes[i] = new IntegerGene(getConfiguration(), 0, CITIES - 1);
-                genes[i].setAllele(new Integer(i));
+                genes[i] = new DoubleGene(getConfiguration(), 0, CITIES - 1);
+                genes[i].setAllele(new Double(i));
             }
             IChromosome sample = new Chromosome(getConfiguration(), genes);
             return sample;

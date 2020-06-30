@@ -1,7 +1,17 @@
 package com.example.agentetsp;
 
 
-public class CarviewActivity  {
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class CarviewActivity  extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_carview);
+        }
         private String Name,Adress,Phone;
         private int img;
 
@@ -44,10 +54,6 @@ public class CarviewActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carview);
-
-
-
-
     }
 
 

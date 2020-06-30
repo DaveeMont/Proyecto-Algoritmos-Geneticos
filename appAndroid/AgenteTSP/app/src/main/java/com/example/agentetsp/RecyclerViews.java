@@ -28,7 +28,7 @@ public class RecyclerViews extends AppCompatActivity  {
         reciclerView.setAdapter(myAdapter);
     }
 
-    private ArrayList<CarviewActivity> getMyList() {
+    public ArrayList<CarviewActivity> getMyList() {
         ArrayList<CarviewActivity> models = new ArrayList<>();
 
         CarviewActivity m = new CarviewActivity();

@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_index_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecyclerView"></activity>
+        <activity android:name=".RecyclerViews"></activity>
         <activity android:name=".CarviewActivity" />
         <activity android:name=".InicioActivity" />
         <activity android:name=".MainActivity">
