@@ -71,7 +71,8 @@ public class InicioActivity extends AppCompatActivity {
             try{
                 String address = strings[0];
                 HttpDataHandler http = new HttpDataHandler();
-                String url = String.format("https://maps.googleapis.com/maps/api/geocode/json?address=%s",address);
+                String url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+
+                        ",+CA&key="+BuildConfig.Google_Geo_Coding;
                 response = http.getHttpData(url);
                 return response;
             }catch (Exception ex){

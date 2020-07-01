@@ -27,20 +27,16 @@ import org.jgap.impl.salesman.Salesman;
  */
 public class TSP extends Salesman{
     
-    /** String containing the CVS revision. Read out via reflection!*/
-    private static final String CVS_REVISION = "$Revision: 1.14 $";
 
     /** Numero de ciudades o nodos a visitar */
-    public static final int CITIES = 5;
-    /*
-    public static final int[][] CITYARRAY = new int[][] { {2, 4}, {7, 5}, {7, 11},
-        {8, 1}, {1, 6}, {5, 9}, {0, 11}
+    public static final int CITIES = 10;
+    public static final double[][] CITYARRAY = new double[][] { 
+        {19.776266, -99.119753}, {19.767437, -99.123009}, {19.746360, -99.097878},
+        {19.752176, -99.093930}, {19.753761, -99.099530}, {19.760044, -99.091653}, 
+        {19.791929, -99.082839}, {19.827808, -99.078333}, {19.824172, -99.116228}, 
+        {19.776283, -99.119924}
     };
-    */
-    public static final double[][] CITYARRAY = new double[][] { {19.776968, -99.116583}, {19.747824, -99.179816}, {19.760017, -99.091561},
-        {19.827389, -99.077679}, {19.817549, -99.079310}
-            
-    };
+    
 
     /** Método main
      *  Solve a sample task with the number of cities, defined in a CITIES
@@ -70,17 +66,34 @@ public class TSP extends Salesman{
     */
     @Override
     public double distance(Gene a_from, Gene a_to) {
-        DoubleGene geneB = (DoubleGene) a_to;
-        DoubleGene geneA = (DoubleGene) a_from;
+        //Formula de haversine
+        IntegerGene geneB = (IntegerGene) a_to;
+        IntegerGene geneA = (IntegerGene) a_from;
         //IntegerGene geneB = (IntegerGene) a_to;
-        int a = (int)geneA.doubleValue();
-        int b = (int)geneB.doubleValue();
-        int x1 = (int) CITYARRAY[a][0];
-        int y1 =(int) CITYARRAY[a][1];
-        int x2 = (int)CITYARRAY[b][0];
-        int y2 =(int) CITYARRAY[b][1];
-        return Math.sqrt( (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+        int a = geneA.intValue();
+        int b = geneB.intValue();
+        double x1 = CITYARRAY[a][0];
+        //System.out.println("X1: "+x1);
+        double y1 = CITYARRAY[a][1];
+        double x2 = CITYARRAY[b][0];
+        double y2 = CITYARRAY[b][1];
+        //return Math.sqrt( (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+        
+        //public static double distanciaCoord(double lat1, double lng1, double lat2, double lng2) 
+        //double radioTierra = 3958.75;//en millas  
+        double radioTierra = 6371;//en kilómetros  
+        double dLat = Math.toRadians(x2 - x1);  
+        double dLng = Math.toRadians(y2 - y1);  
+        double sindLat = Math.sin(dLat / 2);  
+        double sindLng = Math.sin(dLng / 2);  
+        double va1 = Math.pow(sindLat, 2) + Math.pow(sindLng, 2)  
+                * Math.cos(Math.toRadians(x1)) * Math.cos(Math.toRadians(x2));  
+        double va2 = 2 * Math.atan2(Math.sqrt(va1), Math.sqrt(1 - va1));  
+        double distancia = radioTierra * va2;  
+   
+        return distancia; 
     }
+    
     /*
         Para el método createSampleChromosome
         Create an array of the given number of integer genes. The first gene is
@@ -91,8 +104,8 @@ public class TSP extends Salesman{
         try {
             Gene[] genes = new Gene[CITIES];
             for (int i = 0; i < genes.length; i++) {
-                genes[i] = new DoubleGene(getConfiguration(), 0, CITIES - 1);
-                genes[i].setAllele(new Double(i));
+                genes[i] = new IntegerGene(getConfiguration(), 0, CITIES - 1);
+                genes[i].setAllele(new Integer(i));
             }
             IChromosome sample = new Chromosome(getConfiguration(), genes);
             return sample;
