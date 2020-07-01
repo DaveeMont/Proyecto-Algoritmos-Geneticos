@@ -1,6 +1,7 @@
 package com.example.agentetsp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.ContentValues;
@@ -103,8 +104,7 @@ public class InicioActivity extends AppCompatActivity {
             try{
                 String address = strings[0];
                 HttpDataHandler http = new HttpDataHandler();
-                String url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+
-                        ",+CA&key="+BuildConfig.Google_Geo_Coding;
+                String url = String.format("https://maps.googleapis.com/maps/api/geocode/json?address=%s",address);
                 response = http.getHttpData(url);
                 return response;
             }catch (Exception ex){

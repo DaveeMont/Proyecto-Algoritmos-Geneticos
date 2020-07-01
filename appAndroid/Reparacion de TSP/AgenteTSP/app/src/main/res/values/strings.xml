@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AgenteTSP</string>
+    <string name="Inicio">INICIO</string>
+    <string name="Salida">SALIR</string>
+</resources>

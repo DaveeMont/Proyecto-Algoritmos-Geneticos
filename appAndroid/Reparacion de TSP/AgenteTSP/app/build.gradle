@@ -1,7 +1,4 @@
 apply plugin: 'com.android.application'
-def Google_Geo_Coding = '"'+GoogleGeoCoding+'"' ?: '"No token Google"';
-def STRING = 'String'
-
 
 android {
     compileSdkVersion 30
@@ -15,10 +12,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        each{type ->
-            type.buildConfigField STRING, 'GoogleGeoCoding', Google_Geo_Coding
-        }
     }
 
     buildTypes {
