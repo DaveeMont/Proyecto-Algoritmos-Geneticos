@@ -109,7 +109,7 @@ public class InicioActivity extends AppCompatActivity {
                 String address = strings[0];
                 HttpDataHandler http = new HttpDataHandler();
                 String url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address+
-                        ",+CA&key="+BuildConfig.Google_Geo_Coding;
+                        ",+CA&key="+BuildConfig.GoogleGeoCoding;
                 response = http.getHttpData(url);
                 return response;
             }catch (Exception ex){
