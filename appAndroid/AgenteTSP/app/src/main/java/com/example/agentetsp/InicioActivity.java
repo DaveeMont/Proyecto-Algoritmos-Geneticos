@@ -12,22 +12,27 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class InicioActivity extends AppCompatActivity {
-    EditText textNom,textDirr,textTele;
+    Button btnGuardar, btnVer, btnRegresar;
+    EditText textNom,edtAdress,textTele;
     TextView txtCoord;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
+
         textNom = findViewById(R.id.txtNombre);
-        textDirr= findViewById(R.id.txtAddress);
+        edtAdress = (EditText) findViewById(R.id.eAddress);
         textTele = findViewById(R.id.txtTelefono);
         txtCoord=findViewById(R.id.textCoordenadas);
+
     }
 
     //Método para el boton anterior
@@ -46,7 +51,7 @@ public class InicioActivity extends AppCompatActivity {
 
         int id = 0;
         String Nombre= textNom.getText().toString();
-        String Direccion =textDirr.getText(). toString();
+        String Direccion =edtAdress.getText(). toString();
         String  Telefono =textTele.getText().toString();
 
         if(Nombre.isEmpty()){
@@ -73,9 +78,9 @@ public class InicioActivity extends AppCompatActivity {
             Basededatos.insert("tsp",null,registro);
             Basededatos.close();
 
-
+            new GetCoordinates().execute(edtAdress.getText().toString().replace(" ","+"));
             this.textNom.setText("");
-            this.textDirr.setText("");
+            this.edtAdress.setText("");
             this.textTele.setText("");
 
 
