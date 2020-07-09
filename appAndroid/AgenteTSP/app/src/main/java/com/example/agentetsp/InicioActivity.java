@@ -15,14 +15,29 @@ import android.widget.Toast;
 import android.widget.Button;
 
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class InicioActivity extends AppCompatActivity {
+public class InicioActivity extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener {
     Button btnGuardar, btnVer, btnRegresar;
     EditText textNom,edtAdress,textTele;
     TextView txtCoord;
+    ProgressDialog progreso;
+
+    RequestQueue request;
+    JsonObjectRequest jsonObjectRequest;
+
+    StringRequest stringRequest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +47,7 @@ public class InicioActivity extends AppCompatActivity {
         edtAdress = (EditText) findViewById(R.id.eAddress);
         textTele = findViewById(R.id.txtTelefono);
         txtCoord=findViewById(R.id.textCoordenadas);
+        request= Volley.newRequestQueue(this);
 
     }
 
@@ -77,11 +93,11 @@ public class InicioActivity extends AppCompatActivity {
 
             Basededatos.insert("tsp",null,registro);
             Basededatos.close();
+            cargarWebService();
+
 
             new GetCoordinates().execute(edtAdress.getText().toString().replace(" ","+"));
-            this.textNom.setText("");
-            this.edtAdress.setText("");
-            this.textTele.setText("");
+
 
 
             Toast.makeText(this, "Datos guardados correctamente "/*+ Nombre+" "+Direccion+" "+Telefono*/, Toast.LENGTH_SHORT).show();
@@ -89,6 +105,34 @@ public class InicioActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void cargarWebService() {
+        progreso=new ProgressDialog(this);
+        progreso.setMessage("Cargando...");
+        progreso.show();
+
+        //String ip=getString(R.string.ip);
+
+        String url="https://practica4basededatosavanzada.000webhostapp.com/ejemploBDRemota/wsJSONRegistroMovil.php?nombre="+textNom.getText().toString()+"&direccion="+edtAdress.getText(). toString()+"&telefono="+textTele.getText().toString();
+        url = url.replace(" ","%20");
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
+        request.add(jsonObjectRequest);
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        progreso.hide();
+        Toast.makeText(this,"No se ha podido conectar"+error.toString(),Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        Toast.makeText(this,"Se ha registrado con exito",Toast.LENGTH_SHORT).show();
+        progreso.hide();
+        this.textNom.setText("");
+        this.edtAdress.setText("");
+        this.textTele.setText("");
     }
 
     private class GetCoordinates extends AsyncTask<String,Void,String> {

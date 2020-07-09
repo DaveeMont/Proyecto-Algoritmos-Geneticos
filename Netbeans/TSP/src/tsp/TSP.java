@@ -50,6 +50,7 @@ public class TSP extends Salesman{
             IChromosome optimal = t.findOptimalPath(null);
             System.out.println("Solution: ");
             System.out.println(optimal);
+            System.out.println(optimal.toString());
             System.out.println("Score " +
                                (Integer.MAX_VALUE / 2 - optimal.getFitnessValue()));
         }
